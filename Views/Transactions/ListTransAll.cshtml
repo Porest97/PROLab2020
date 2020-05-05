@@ -1,0 +1,77 @@
+﻿@model PROLab.Models.ViewModels.ACCViewModel
+@{
+    ViewData["Title"] = "ListTransAll";
+}
+
+
+<div class="badge align-content-center badge-light">
+    <div class="col-sm-12">
+        <h1>Transactions - All</h1>
+        <a class="btn btn-sm btn-success" asp-controller="Transactions" asp-action="Create">Create new transaction</a>
+        <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="Accounting">Back to accounting</a>
+    </div>
+    <div class="badge">
+        <table class="table table-responsive-lg table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transactions[0].Account)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transactions[0].TransDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Transactions[0].Amount)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.Accounts[0].Balance)
+                    </th>
+                    <th>
+                            @Html.DisplayNameFor(model => model.People[0].PersonType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.People[0].PersonRole)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.People[0].PersonStatus)
+                        </th>*@
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Transactions.OrderBy(tr => tr.Account.AccountNumber))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Account.AccountNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TransDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Balance)
+                        </td>
+                        <td>
+                                @Html.DisplayFor(modelItem => item.PersonType.PersonTypeName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PersonRole.PersonRoleName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PersonStatus.PersonStatusName)
+                            </td>*@
+                        <td>
+                            <a class="btn btn-sm btn-success" asp-controller="Transactions" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-sm btn-success" asp-controller="Transactions" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="btn btn-sm btn-danger" asp-controller="Transactions" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

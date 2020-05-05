@@ -1,0 +1,44 @@
+﻿@model PROLab.Models.ViewModels.MDSViewModel
+@{
+    ViewData["Title"] = "ListPHSamplings";
+}
+
+
+<div class="badge align-content-center badge-light">
+    <div class="col-sm-12">
+        <h1>Physical samplings - All</h1>
+        <a class="btn btn-sm btn-success" asp-controller="PhysicalSamplings" asp-action="Create">Create new Sammpling</a>
+        <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="MediStats">Back to Medical Stats</a>
+    </div>
+    <div class="badge">
+        <table class="table table-responsive-lg table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.PhysicalSamplings[0].DateTimeSampleTaken)</th>
+                    <th>@Html.DisplayNameFor(model => model.PhysicalSamplings[0].BloodPressure)</th>
+                    <th>@Html.DisplayNameFor(model => model.PhysicalSamplings[0].BodyTemperature)</th>
+                    <th>@Html.DisplayNameFor(model => model.PhysicalSamplings[0].Oxygenation)</th>
+                    <th>@Html.DisplayNameFor(model => model.PhysicalSamplings[0].Comment)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PhysicalSamplings.OrderByDescending(phs => phs.BodyTemperature))
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.DateTimeSampleTaken)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BloodPressure)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BodyTemperature)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Oxygenation)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Comment)</td>
+                        <td>
+                            <a class="btn btn-sm btn-success" asp-controller="PhysicalSamplings" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-sm btn-success" asp-controller="PhysicalSamplings" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="btn btn-sm btn-danger" asp-controller="PhysicalSamplings" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
