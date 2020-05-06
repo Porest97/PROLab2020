@@ -1,0 +1,34 @@
+﻿@model PROLab.NBS.Models.ViewModels.NBSSettingsViewModel
+@{
+    ViewData["Title"] = "ListCompanyRoles";
+}
+
+<h1>Company Roles</h1>
+<div class="badge">
+    <a class="btn btn-sm btn-success" asp-controller="CompanyRoles" asp-action="Create">Create new Role</a>
+    <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="NBSSettings">Back to NBS Settings</a>
+
+    <table class="table table-responsive-sm table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.CompanyRoles[0].Id)</th>
+                <th>@Html.DisplayNameFor(model => model.CompanyRoles[0].CompanyRoleName)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CompanyRoles.OrderBy(cr => cr.Id))
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CompanyRoleName)</td>
+                    <td>
+                        <a class="btn btn-sm btn-success" asp-controller="CompanyRoles" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-sm btn-success" asp-controller="CompanyRoles" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-sm btn-danger" asp-controller="CompanyRoles" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "NBSSettings";
+}
+
+<h1>NBS Settings (Roles, Statuses and Types)</h1>
+
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="btn btn-lg btn-outline-primary" asp-area="" asp-controller="CompanyRoles" asp-action="ListCompanyRoles">View, Create and Edit Company Roles</a>
+    </li>
+</ul>
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="btn btn-lg btn-outline-primary" asp-area="" asp-controller="CompanyStatus" asp-action="ListCompanyStatuses">View, Create and Edit Company Statuses</a>
+    </li>
+</ul>
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="btn btn-lg btn-outline-primary" asp-area="" asp-controller="CompanyTypes" asp-action="ListCompanyTypes">View, Create and Edit Company Types</a>
+    </li>
+</ul>
+
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="btn btn-sm btn-success" asp-area="" asp-controller="Home" asp-action="NBS">Back To NBS - Tools</a>
+    </li>
+</ul>

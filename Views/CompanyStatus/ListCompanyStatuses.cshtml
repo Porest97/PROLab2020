@@ -1,0 +1,34 @@
+﻿@model PROLab.NBS.Models.ViewModels.NBSSettingsViewModel
+@{
+    ViewData["Title"] = "ListCompanyStatuses";
+}
+
+<h1>Company Statuses</h1>
+<div class="badge">
+    <a class="btn btn-sm btn-success" asp-controller="CompanyStatus" asp-action="Create">Create new Status</a>
+    <a class="btn btn-sm btn-success" asp-controller="Home" asp-action="NBSSettings">Back to NBS Settings</a>
+
+    <table class="table table-responsive-sm table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.CompanyStatuses[0].Id)</th>
+                <th>@Html.DisplayNameFor(model => model.CompanyStatuses[0].CompanyStatusName)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CompanyStatuses.OrderBy(cs => cs.Id))
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CompanyStatusName)</td>
+                    <td>
+                        <a class="btn btn-sm btn-success" asp-controller="CompanyStatus" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-sm btn-success" asp-controller="CompanyStatus" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-sm btn-danger" asp-controller="CompanyStatus" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

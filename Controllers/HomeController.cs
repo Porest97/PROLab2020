@@ -38,6 +38,16 @@ namespace PROLab.Controllers
             return View();
         }
 
+        public IActionResult NBS()
+        {
+            return View();
+        }
+
+        public IActionResult NBSSettings()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
